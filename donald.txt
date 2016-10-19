@@ -1,0 +1,73 @@
+ +--------+--------------------------------+--------------------------------+---------------------+------------------------------------------------------------------------+----------------+
+| Domain | Method                         | URI                            | Name                | Action                                                                 | Middleware     |
++--------+--------------------------------+--------------------------------+---------------------+------------------------------------------------------------------------+----------------+
+|        | GET|HEAD                       | /                              | home                | App\Http\Controllers\HomeController                                    | web            |
+|        | GET|HEAD                       | admin                          | admin               | App\Http\Controllers\AdminController                                   | web,admin      |
+|        | GET|HEAD                       | articles                       |                     | App\Http\Controllers\BlogFrontController@index                         | web            |
+|        | GET|HEAD                       | blog                           | blog.index          | App\Http\Controllers\BlogController@index                              | web,redac      |
+|        | POST                           | blog                           | blog.store          | App\Http\Controllers\BlogController@store                              | web,redac      |
+|        | GET|HEAD                       | blog/create                    | blog.create         | App\Http\Controllers\BlogController@create                             | web,redac      |
+|        | GET|HEAD                       | blog/order                     | blog.order          | App\Http\Controllers\BlogController@indexOrder                         | web,redac      |
+|        | GET|HEAD                       | blog/search                    |                     | App\Http\Controllers\BlogFrontController@search                        | web            |
+|        | GET|HEAD                       | blog/tag                       |                     | App\Http\Controllers\BlogFrontController@tag                           | web            |
+|        | DELETE                         | blog/{blog}                    | blog.destroy        | App\Http\Controllers\BlogController@destroy                            | web,redac      |
+|        | PUT|PATCH                      | blog/{blog}                    | blog.update         | App\Http\Controllers\BlogController@update                             | web,redac      |
+|        | GET|HEAD                       | blog/{blog}                    | blog.show           | App\Http\Controllers\BlogFrontController@show                          | web            |
+|        | GET|HEAD                       | blog/{blog}/edit               | blog.edit           | App\Http\Controllers\BlogController@edit                               | web,redac      |
+|        | POST                           | comment                        | comment.store       | App\Http\Controllers\CommentController@store                           | web,auth       |
+|        | GET|HEAD                       | comment                        | comment.index       | App\Http\Controllers\CommentController@index                           | web,admin      |
+|        | PUT                            | comment/{comment}              | comment.update      | App\Http\Controllers\CommentAjaxController@update                      | web,auth,ajax  |
+|        | DELETE                         | comment/{comment}              | comment.destroy     | App\Http\Controllers\CommentController@destroy                         | web,auth       |
+|        | GET|HEAD                       | comment/{comment}/edit         | comment.edit        | App\Http\Controllers\CommentController@edit                            | web            |
+|        | PUT                            | commentseen/{id}               |                     | App\Http\Controllers\CommentAjaxController@updateSeen                  | web,admin,ajax |
+|        | GET|HEAD                       | confirm/{token}                |                     | App\Http\Controllers\Auth\RegisterController@confirm                   | web,guest      |
+|        | POST                           | contact                        | contact.store       | App\Http\Controllers\ContactController@store                           | web            |
+|        | GET|HEAD                       | contact                        | contact.index       | App\Http\Controllers\ContactController@index                           | web,admin      |
+|        | GET|HEAD                       | contact/create                 | contact.create      | App\Http\Controllers\ContactController@create                          | web            |
+|        | PUT|PATCH                      | contact/{contact}              | contact.update      | App\Http\Controllers\ContactController@update                          | web,admin,ajax |
+|        | DELETE                         | contact/{contact}              | contact.destroy     | App\Http\Controllers\ContactController@destroy                         | web,admin      |
+|        | POST                           | customers                      | customers.store     | App\Http\Controllers\CustomersController@store                         | web            |
+|        | GET|HEAD                       | customers                      | customers.index     | App\Http\Controllers\CustomersController@index                         | web            |
+|        | GET|HEAD                       | customers/create               | customers.create    | App\Http\Controllers\CustomersController@create                        | web            |
+|        | PUT|PATCH                      | customers/{customer}           | customers.update    | App\Http\Controllers\CustomersController@update                        | web            |
+|        | GET|HEAD                       | customers/{customer}           | customers.show      | App\Http\Controllers\CustomersController@show                          | web            |
+|        | DELETE                         | customers/{customer}           | customers.destroy   | App\Http\Controllers\CustomersController@destroy                       | web            |
+|        | GET|HEAD                       | customers/{customer}/edit      | customers.edit      | App\Http\Controllers\CustomersController@edit                          | web            |
+|        | GET|HEAD                       | dashboard                      | dashboard           | App\Http\Controllers\DashboardController                               | web,auth       |
+|        | GET|HEAD                       | elfinder                       |                     | Barryvdh\Elfinder\ElfinderController@showIndex                         | web,redac      |
+|        | GET|HEAD                       | elfinder/ckeditor              | elfinder.ckeditor   | Barryvdh\Elfinder\ElfinderController@showCKeditor4                     | web,redac      |
+|        | GET|HEAD|POST|PUT|PATCH|DELETE | elfinder/connector             | elfinder.connector  | App\Http\Controllers\ElfinderController@showConnector                  | web,redac      |
+|        | GET|HEAD                       | elfinder/filepicker/{input_id} | elfinder.filepicker | Barryvdh\Elfinder\ElfinderController@showFilePicker                    | web,redac      |
+|        | GET|HEAD                       | elfinder/popup/{input_id}      | elfinder.popup      | Barryvdh\Elfinder\ElfinderController@showPopup                         | web,redac      |
+|        | GET|HEAD                       | employees                      |                     | App\Http\Controllers\EmployeesController@index                         | web            |
+|        | GET|HEAD                       | language/{lang}                |                     | App\Http\Controllers\LanguageController                                | web            |
+|        | GET|HEAD                       | loan                           |                     | App\Http\Controllers\loansController@index                             | web            |
+|        | GET|HEAD                       | login                          | login               | App\Http\Controllers\Auth\LoginController@showLoginForm                | web,guest      |
+|        | POST                           | login                          |                     | App\Http\Controllers\Auth\LoginController@login                        | web,guest      |
+|        | POST                           | logout                         |                     | App\Http\Controllers\Auth\LoginController@logout                       | web            |
+|        | GET|HEAD                       | medias                         | medias              | App\Http\Controllers\FilemanagerController                             | web,redac      |
+|        | PUT                            | notifications/{notification}   |                     | App\Http\Controllers\NotificationController@update                     | web,redac      |
+|        | GET|HEAD                       | notifications/{user}           |                     | App\Http\Controllers\NotificationController@index                      | web,redac      |
+|        | POST                           | password/email                 |                     | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web,guest      |
+|        | GET|HEAD                       | password/reset                 |                     | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web,guest      |
+|        | POST                           | password/reset                 |                     | App\Http\Controllers\Auth\ResetPasswordController@reset                | web,guest      |
+|        | GET|HEAD                       | password/reset/{token}         |                     | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web,guest      |
+|        | PUT                            | postactive/{id}                |                     | App\Http\Controllers\BlogAjaxController@updateActive                   | web,redac,ajax |
+|        | PUT                            | postseen/{id}                  |                     | App\Http\Controllers\BlogAjaxController@updateSeen                     | web,admin,ajax |
+|        | GET|HEAD                       | register                       |                     | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web,guest      |
+|        | POST                           | register                       |                     | App\Http\Controllers\Auth\RegisterController@register                  | web,guest      |
+|        | GET|HEAD                       | resend                         |                     | App\Http\Controllers\Auth\RegisterController@resend                    | web,guest      |
+|        | POST                           | roles                          |                     | App\Http\Controllers\RoleController@update                             | web,admin      |
+|        | GET|HEAD                       | roles                          |                     | App\Http\Controllers\RoleController@edit                               | web,admin      |
+|        | GET|HEAD                       | test                           |                     | Closure                                                                | web            |
+|        | POST                           | user                           | user.store          | App\Http\Controllers\UserController@store                              | web,admin      |
+|        | GET|HEAD                       | user/blog-report               | user.blog.report    | App\Http\Controllers\UserController@blogReport                         | web,admin      |
+|        | GET|HEAD                       | user/create                    | user.create         | App\Http\Controllers\UserController@create                             | web,admin      |
+|        | GET|HEAD                       | user/sort/{role?}              |                     | App\Http\Controllers\UserController@index                              | web,admin      |
+|        | GET|HEAD                       | user/{user}                    | user.show           | App\Http\Controllers\UserController@show                               | web,admin      |
+|        | PUT|PATCH                      | user/{user}                    | user.update         | App\Http\Controllers\UserController@update                             | web,admin      |
+|        | DELETE                         | user/{user}                    | user.destroy        | App\Http\Controllers\UserController@destroy                            | web,admin      |
+|        | GET|HEAD                       | user/{user}/edit               | user.edit           | App\Http\Controllers\UserController@edit                               | web,admin      |
+|        | PUT                            | userseen/{user}                |                     | App\Http\Controllers\UserAjaxController@updateSeen                     | web,admin,ajax |
+|        | PUT                            | uservalid/{id}                 |                     | App\Http\Controllers\UserAjaxController@valid                          | web,admin,ajax |
++--------+--------------------------------+--------------------------------+---------------------+------------------------------------------------------------------------+----------------+
