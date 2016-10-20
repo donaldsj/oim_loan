@@ -96,6 +96,13 @@ class LoansController extends Controller
                     ->join('loans as l', 'r.loan_code', '=', 'l.loan_code')
                     ->where('l.id', $id)->get();
 
+        $tellers = DB::table('users as u')
+                    ->join('loans_returns as r', 'u.id', '=', 'r.user_id')
+                    ->join('loans as l', 'r.loan_code', '=', 'l.loan_code')
+                    ->select('u.first_name', 'u.middle_name', 'u.last_name','l.id', 'l.loan_code')
+                    ->where('l.id',$id)
+                    ->get()->first();
+                     
         $total_returns = DB::table('loans_returns as r')
                     ->join('loans as l', 'r.loan_code', '=', 'l.loan_code')
                     ->where('l.id', $id)->sum('r.return_amount');
@@ -112,7 +119,7 @@ class LoansController extends Controller
             return '<p class="alert alert-warning">'."Sorry! Selected data is not accessible".'</p>';
         }
 
-        return view('loans.loan_detail', ['loan' => $loan, 'returns'=>$returns, 'total_returns'=>$total_returns, 'officer'=>$officer, 'user' => $user]);
+        return view('loans.loan_detail', ['loan' => $loan, 'returns'=>$returns, 'total_returns'=>$total_returns, 'officer'=>$officer, 'tellers'=>$tellers, 'user' => $user]);
     }
 
     /**
@@ -189,7 +196,7 @@ class LoansController extends Controller
         $loan_code = "IOML".$id."C".$cID;
 
         DB::table('loans')
-            ->where('id', $id)
+            ->where('id', Loan::findOrFail($id))
             ->update(['confirmed'=>1, 'loan_code'=>$loan_code]);
 
         return redirect()->route('loan.details', $id);

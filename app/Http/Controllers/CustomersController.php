@@ -101,7 +101,10 @@ class CustomersController extends Controller
     public function show($id)
     {
         $user = Auth::user();
-
+/*
+        $default_obj = array(['first_name'=>"None",'middle_name'=>"None",'last_name'=>"None",'photo_url'=>"None",'job'=>"None"]);
+        
+*/
         $attending_officers = DB::table('users as u')
                     ->join('customers as c', 'u.id', '=', 'c.employee_id' )
                     ->select('u.first_name', 'u.middle_name', 'u.last_name')

@@ -21,7 +21,7 @@
                     <div class="panel">
                         <h3>LOAN DETAILS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <span class="hidden-print">
-                                <a href="<?php echo URL::to('loans'); ?>" class="btn btn-sm btn-primary m-r-5 m-b-5"><i class="fa fa-arrow-left m-r-5"></i>Back to Loans list</a>
+                               <!--  <a href="<?php echo URL::to('loans'); ?>" class="btn btn-sm btn-primary m-r-5 m-b-5"><i class="fa fa-arrow-left m-r-5"></i>Back to Loans list</a> -->
                             </span>
                         </h3>
                         <div class="row col-md-8">
@@ -66,7 +66,6 @@
                                         <th>Date</th>
                                         <th>Amount</th>
                                         <th>Teller</th>
-                                        <th width="10%"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -74,9 +73,9 @@
                                         <?php $__currentLoopData = $returns; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $loan_return): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                             <tr>
                                                 <td><?php echo $loan_return->return_date; ?></td>
-                                                <td><?php echo $loan_return->return_amount; ?></td>
+                                                <td><?php echo number_format($loan_return->return_amount, 2, '.', ','); ?></td>
                                                 <td><?php echo $loan_return->user_id; ?></td>
-                                                <td><a href="">Edit</a></td>
+                                                
                                             </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                                     <?php else: ?>
@@ -97,14 +96,16 @@
                         AHSANTE KWA KUCHAGUA KUWA MTEJA WETU!
                     </p>
                     <p class="text-center">
-                        <span class="m-r-10"><i class="fa fa-globe"></i> matiasgallipoli.com</span>
-                        <span class="m-r-10"><i class="fa fa-phone"></i> T:016-18192302</span>
-                        <span class="m-r-10"><i class="fa fa-envelope"></i> rtiemps@gmail.com</span>
+                        <span class="m-r-10"><i class="fa fa-globe"></i>One Icon Microfinance</span>
+                        <span class="m-r-10"><i class="fa fa-phone"></i>+255 713 594923</span>
+                        <span class="m-r-10"><i class="fa fa-envelope"></i>donaldsj90@gmail.com</span>
                     </p>
                 </div>
                 <div class="row col-md-8">
                         <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-info"><i class="fa fa-print m-r-5"></i> Print</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-danger"><i class="fa fa-trash m-r-5"></i> Delete this loan!</a>
+                        <?php if(($loan->confirmed == 0) && ($loan->loan_code == "")): ?>
+                            <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-danger"><i class="fa fa-trash m-r-5"></i> Delete this loan!</a>
+                        <?php endif; ?>
                 </div>
                 <div style="clear: both;"></div>
             </div>

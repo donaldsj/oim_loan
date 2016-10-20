@@ -35,8 +35,16 @@ Route::group(['middleware' => 'auth'], function () {
 			'uses' => 'EmployeesController@index',
 			'as' => 'employees'
 		));
+	Route::get('employees/create', array(
+			'uses' => 'EmployeesController@create',
+			'as' => 'employees.create'
+		));
+	Route::post('employees/store', array(
+			'uses' => 'EmployeesController@store',
+			'as' => 'employees.store'
+		));
 
-	Route::post('employees/store', 'EmployeesController@store');
+	/*Route::post('employees/store', 'EmployeesController@store');*/
 	Route::get('employees/{id}', 'EmployeesController@show');
 
 	//Loans

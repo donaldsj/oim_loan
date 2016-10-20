@@ -40,7 +40,7 @@
                                     <tr>
                                         <td>Name: <strong><?php echo $customer->first_name; ?>&nbsp;<?php echo $customer->second_name; ?>&nbsp;<?php echo $customer->last_name; ?></strong></td>
                                         <td rowspan="6"><img src="<?php echo asset('img/customers_photo/'.$customer->photo_url); ?>" width="" height="160px" /></td>
-                                        <td>Name: <strong><?php echo $referees->first_name; ?>&nbsp; <?php echo $referees->first_name; ?>&nbsp; <?php echo $referees->first_name; ?></strong></td>
+                                        <td>Name: <strong><?php echo $referees->first_name; ?>&nbsp;<?php echo $referees->middle_name; ?>&nbsp;<?php echo $referees->last_name; ?></strong></td>
                                         <td rowspan="6"><img src="<?php echo asset('img/customers_photo/'.$referees->photo_url); ?>" width="" height="160px" /></td>
                                     </tr>
                                     <tr>

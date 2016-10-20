@@ -12,7 +12,7 @@
             <fieldset>
                 <legend class="pull-left width-full">Identification</legend>
 
-        {!! Form::open(['route' => 'employees.store', 'class' => '']) !!}
+        {!! Form::open(['route' => 'employees.store', 'method'=>'POST', 'class' => '']) !!}
 
                 <!-- begin row -->
                 <div class="row">

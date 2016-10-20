@@ -39,7 +39,7 @@
                                     <tr>
                                         <td>Name: <strong>{!! $customer->first_name !!}&nbsp;{!! $customer->second_name !!}&nbsp;{!! $customer->last_name !!}</strong></td>
                                         <td rowspan="6"><img src="{!! asset('img/customers_photo/'.$customer->photo_url) !!}" width="" height="160px" /></td>
-                                        <td>Name: <strong>{!! $referees->first_name !!}&nbsp; {!! $referees->first_name !!}&nbsp; {!! $referees->first_name !!}</strong></td>
+                                        <td>Name: <strong>{!! $referees->first_name !!}&nbsp;{!! $referees->middle_name !!}&nbsp;{!! $referees->last_name !!}</strong></td>
                                         <td rowspan="6"><img src="{!! asset('img/customers_photo/'.$referees->photo_url) !!}" width="" height="160px" /></td>
                                     </tr>
                                     <tr>

@@ -70,8 +70,10 @@
 	                                            	<?php echo Form::open(['method' => 'DELETE', 'route' => ['loan.destroy', $loan->id], 'id' => 'form-delete-loan-' . $loan->id]); ?>
 
 												    	<a href="<?php echo route('loan.details', $loan->id); ?>"><i class="fa fa-file-text-o"></i></a>&nbsp;&nbsp;
-	                                            		<a href=""><i class="fa fa-edit"></i></a>
-												    	<a href="" class="delete_data" data-form="loan-<?php echo e($loan->id); ?>"><i class="fa fa-trash"></i></a>
+												    	<?php if(($loan->confirmed == 0) && ($loan->loan_code == "")): ?>
+	                                            			<a href=""><i class="fa fa-edit"></i></a>
+												    		<a href="" class="delete_data" data-form="loan-<?php echo e($loan->id); ?>"><i class="fa fa-trash"></i></a>
+												    	<?php endif; ?>
 												  	<?php echo Form::close(); ?>
 
 	                                            </td>
