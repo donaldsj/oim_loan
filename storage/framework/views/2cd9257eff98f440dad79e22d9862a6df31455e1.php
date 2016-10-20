@@ -59,7 +59,8 @@
                                                 <td><?php echo $epmloyee->role_id; ?></td>
                                                 <td>
                                                     <a href=""><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                                                    <a href=""><i class="fa fa-trash"></i></a>
+                                                    <a href=""><i class="fa fa-trash"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                                    <a href=""><i class="fa fa-lg fa-ban on fa-camera"></i></a>
                                                 </td>
                                             </tr>  
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>                                                    

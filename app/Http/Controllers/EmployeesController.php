@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\User;
 use Auth;
-
+use DB;
 use Response;
 use Validator;
 use Redirect;
@@ -22,7 +22,8 @@ class EmployeesController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $employees = User::orderBy('id', 'DESC')->paginate(6);
+        /*$employees = User::orderBy('id', 'DESC')->paginate(6);*/
+        $employees = DB::table('users')->where('id', '!=', 1)->where('email', '!=', 'admin@admin.com')->paginate(6);
         return view('employees.index', compact('employees','user'));
     }
 
