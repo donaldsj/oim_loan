@@ -192,12 +192,13 @@ class LoansController extends Controller
     public function confirm($id)
     {
         $cID = DB::table('loans')->select('customer_id')->where('id',$id)->first()->customer_id;
-        
-        $loan_code = "IOML".$id."C".$cID;
 
-        DB::table('loans')
-            ->where('id', Loan::findOrFail($id))
-            ->update(['confirmed'=>1, 'loan_code'=>$loan_code]);
+        $loan_code = "IOML".$id."C".$cID;
+        
+        $row = Loan::findOrFail($id);
+        $row->confirmed = 1;
+        $row->loan_code = $loan_code;
+        $row->save();
 
         return redirect()->route('loan.details', $id);
 

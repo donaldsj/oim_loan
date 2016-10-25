@@ -25,7 +25,8 @@ class DashboardController extends Controller
                     ->select('l.*', 'c.first_name', 'c.second_name', 'c.last_name', 'c.phone_number')
                     ->orderBy('id', 'DESC')->paginate(8);
 
-            $active_loan_amount = DB::table('loans')->where('status', 0)->sum('loan_amount');
+            $active_loan_amount = DB::table('loans')
+                                ->where('status', 0)->sum('loan_amount');
 
             $returned = DB::table('loans_returns as r')
                     ->join('loans as l', 'r.loan_code', '=', 'l.loan_code')

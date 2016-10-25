@@ -97,18 +97,17 @@
                     </div>
                 
                 <div class="invoice-note invoice-footer">
-                    * Make all cheques payable to [Your Company Name]<br />
-                    * Payment is due within 30 days<br />
-                    * If you have any questions concerning this invoice, contact  [Name, Phone Number, Email]
+                    * Welcome at one icone microfinance<br />
+                    * If you have any questions concerning this printout please contact us
                 </div>
                 <div class="invoice-footer text-muted">
                     <p class="text-center m-b-5">
-                        THANK YOU FOR YOUR BUSINESS
+                        THANK YOU FOR CHOOSING ONE ICON MICROFINANCE
                     </p>
                     <p class="text-center">
-                        <span class="m-r-10"><i class="fa fa-globe"></i> matiasgallipoli.com</span>
-                        <span class="m-r-10"><i class="fa fa-phone"></i> T:016-18192302</span>
-                        <span class="m-r-10"><i class="fa fa-envelope"></i> rtiemps@gmail.com</span>
+                        <span class="m-r-10"><i class="fa fa-globe"></i>oim.com</span>
+                        <span class="m-r-10"><i class="fa fa-phone"></i> M: +255 713 594923</span>
+                        <span class="m-r-10"><i class="fa fa-envelope"></i>E: donaldsj9@gmail.com</span>
                     </p>
                 </div>
             </div>
