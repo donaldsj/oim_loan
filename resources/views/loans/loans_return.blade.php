@@ -33,7 +33,11 @@
 				                                <div class="col-md-4">
 				                                    <div class="form-group">
 				                                    	<label for="loan_code">LOAN CODE / ID:</label>
-				                                    	<input type="text" name="loan_code" placeholder="" class="form-control" data-parsley-group="wizard-step-1" />
+				                                    	<select name="loan_code" class="form-control" data-parsley-group="wizard-step-1">
+				                                    		@foreach($loan_codes as $codes)
+				                                    			<option value="{!! $codes->loan_code !!}">{!! $codes->loan_code !!}</option>
+				                                    		@endforeach
+				                                    	</select>
 				                                    </div>
 				                                </div>				                                
 			                                </div>

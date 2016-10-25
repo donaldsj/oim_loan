@@ -164,8 +164,9 @@ class LoansController extends Controller
     public function returnsView()
     {
        $user = Auth::user();
-       
-        return view('loans.loans_return', compact('user'));
+       $loan_codes = DB::table('loans')->select('loan_code')->where('status', '=', 0)->where('loan_code', '!=', '')->get();
+          
+        return view('loans.loans_return', compact('user', 'loan_codes'));
     }
 
 
@@ -194,7 +195,7 @@ class LoansController extends Controller
         $cID = DB::table('loans')->select('customer_id')->where('id',$id)->first()->customer_id;
 
         $loan_code = "IOML".$id."C".$cID;
-        
+
         $row = Loan::findOrFail($id);
         $row->confirmed = 1;
         $row->loan_code = $loan_code;

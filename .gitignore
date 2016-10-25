@@ -46,6 +46,7 @@ fabric.properties
 
 /vendor
 /node_modules
+/storage
 
 database/database.sqlite
 public/files/.quarantine/
