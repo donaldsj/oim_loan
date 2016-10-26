@@ -66,9 +66,9 @@ class LoansController extends Controller
         $user = Auth::user();
         $validator = Validator::make($data = $request->all(), Loan::$rules);
 
-        $data['balance'] = $request->loan_amount;
+        $data['balance'] = 0;
         $data['loan_date'] = date('Y-m-d', strtotime($request->loan_date));
-        $data['due_date'] = date('Y-m-d');
+        $data['due_date'] = date('Y-m-d', strtotime($request->due_date));
 
         if ($validator->fails())
         {

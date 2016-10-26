@@ -129,13 +129,14 @@
                                             <div class="row">
                                             	<div class="col-md-4">                                            		
 				                                	<div class="form-group">
-				                                    	<label for="loan_date">Date:</label>		                  	                  
+				                                    	<label for="loan_date">Date:</label>
 				                                        <input type="text" name="loan_date" class="form-control" id="datepicker-autoClose" placeholder="" />
 				                                    </div>
 				                                </div>
 				                            </div>
+
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
 													<div class="form-group block1">
 														<label for="loan_amount">AMOUNT:</label>
 														<input type="text" name="loan_amount" placeholder="" class="form-control" data-parsley-group="wizard-step-1" />
@@ -158,6 +159,14 @@
 													</div>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                            	<div class="col-md-4">                                            		
+				                                	<div class="form-group">
+				                                    	<label for="due_date">Due Date:</label>
+				                                        <input type="date" name="due_date" class="form-control" id="datepicker-autoClose" placeholder="" />
+				                                    </div>
+				                                </div>
+				                            </div>
                                             <div class="row">                                            
 				                                <div class="col-md-4">
 				                                    <div class="form-group">
