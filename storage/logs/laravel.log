@@ -4812,3 +4812,6 @@ Stack trace:
 #45 C:\xampp\htdocs\ioMicrofinance\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(116): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #46 C:\xampp\htdocs\ioMicrofinance\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #47 {main}  
+[2016-10-27 04:25:25] development.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function where() on integer' in C:\xampp\htdocs\ioMicrofinance\app\Http\Controllers\LoansController.php:189
+Stack trace:
+#0 {main}  

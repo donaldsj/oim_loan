@@ -186,6 +186,7 @@ class LoansController extends Controller
 
         $returns = LoansReturn::create($data);
         if($returns){
+            DB::table('loans')->where('loan_code', $request->loan_code)->increment('balance', $request->return_amount);
            return redirect()->route('loans');
         }
     }
