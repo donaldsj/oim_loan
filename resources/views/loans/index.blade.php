@@ -67,13 +67,11 @@
 	                                            <td>{!! ($loan->status == 0)? "open" : "Closed" !!}</td>
 	                                            <td>{!! ($loan->confirmed == 0)? '<i class="fa fa-times"></i>' : '<i class="fa fa-check"></i>' !!}</td>
 	                                            <td>	                                            	
-	                                            	{!! Form::open(['method' => 'DELETE', 'route' => ['loan.destroy', $loan->id], 'id' => 'form-delete-loan-' . $loan->id]) !!}
-												    	<a href="{!! route('loan.details', $loan->id) !!}"><i class="fa fa-file-text-o"></i></a>&nbsp;&nbsp;
-												    	@if(($loan->confirmed == 0) && ($loan->loan_code == ""))
-	                                            			<a href=""><i class="fa fa-edit"></i></a>
-												    		<a href="" class="delete_data" data-form="loan-{{ $loan->id }}"><i class="fa fa-trash"></i></a>
-												    	@endif
-												  	{!! Form::close() !!}
+	                                            	<a href="{!! route('loan.details', $loan->id) !!}"><i class="fa fa-file-text-o"></i></a>&nbsp;&nbsp;
+												    @if(($loan->confirmed == 0) && ($loan->loan_code == ""))
+	                                            		<a href=""><i class="fa fa-edit"></i></a>
+												    	<a href="{!! route('loan.destroy',$loan->id) !!}"><i class="fa fa-trash"></i></a>
+												    @endif
 	                                            </td>
 	                                        </tr>
 	                                   <!--  </a> -->

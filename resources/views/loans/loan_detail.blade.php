@@ -119,8 +119,9 @@
                 <div class="row col-md-8">
                         <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-info"><i class="fa fa-print m-r-5"></i> Print</a>&nbsp;&nbsp;&nbsp;&nbsp;
                         @if(($loan->confirmed == 0) && ($loan->loan_code == ""))
-                            <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash m-r-5"></i> Delete this loan!</a>
+                            <a href="{!! route('loan.destroy',$loan->id) !!}" class="btn btn-sm btn-danger"><i class="fa fa-trash m-r-5"></i> Delete this loan!</a>
                         @endif
+                        
                 </div>
                 <div style="clear: both;"></div>
             </div>

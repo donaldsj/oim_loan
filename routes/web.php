@@ -63,7 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
 			'as' => 'loan.details'
 		));
 
-	Route::delete('loans/{id}/delete', array(
+	Route::get('loans/{id}/delete', array(
 			'uses' => 'LoansController@destroy', 
 			'as' => 'loan.destroy'
 		));
