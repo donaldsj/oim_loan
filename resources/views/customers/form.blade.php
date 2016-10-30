@@ -95,10 +95,6 @@
                             <label>Group</label>
                             <select name="group_id" class="form-control" data-parsley-group="wizard-step-1" >
                                 <option value="0">Individual</option>
-                                <option value="1">Group one</option>
-                                <option value="2">Group one</option>
-                                <option value="3">Group one</option>
-                                <option value="4">Group one</option>
                             </select>
                         </div>
                     </div>
@@ -153,12 +149,8 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>Region / City</label>
-                            <select name="region" class="form-control" data-parsley-group="wizard-step-2" >
-                                <option value="0">Dar es Salaam</option>
-                                <option value="1">Mwanza</option>
-                                <option value="2">Arusha</option>
-                            </select>
+                            {!! Form::label('region', 'Region / City') !!}
+                            {!! Form::select('region', array('0'=>'','Arusha'=>'Arusha','Dar es Salaam'=>'Dar es Salaam','Dodoma'=>'Dodoma','Geita'=>'Geita','Iringa'=>'Iringa','Kagera'=>'Kagera','Katavi'=>'Katavi','Kigoma'=>'Kigoma','Kilimanjaro'=>'Kilimanjaro','Lindi'=>'Lindi','Manyara'=>'Manyara','Mara'=>'Mara','Mbeya'=>'Mbeya','Morogoro'=>'Morogoro','Mtwara'=>'Mtwara','Mwanza'=>'Mwanza','Njombe'=>'Njombe','Pemba North'=>'Pemba North','Pemba South'=>'Pemba South','Pwani'=>'Pwani','Rukwa'=>'Rukwa','Ruvuma'=>'Ruvuma','Shinyanga'=>'Shinyanga','Simiyu'=>'Simiyu','Singida'=>'Singida','Tabora'=>'Tabora','Tanga'=>'Tanga','Zanzibar North'=>'Zanzibar North','Zanzibar South and Central'=>'Zanzibar South and Central','Zanzibar West'=>'Zanzibar West'), null, array('class'=>'form-control')) !!}
                         </div>
                     </div>
                 </div>

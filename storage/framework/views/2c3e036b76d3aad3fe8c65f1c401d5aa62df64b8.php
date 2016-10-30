@@ -63,7 +63,7 @@
                                         <th colspan="5"><center><strong>REFEREES</strong></center></th>
                                     </tr>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>Name&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo route('create_referee', $customer->id); ?>">+Add Referee</a> </th>
                                         <th>Job</th>
                                         <th>Address</th>
                                         <th>Contacts</th>
@@ -87,7 +87,7 @@
                                         </tr>
                                     <?php endif; ?>                                                             
                                 </tbody>
-                            </table><a href="">+Add Referee</a>                             
+                            </table>                            
                         </div>
 
                         <div class="row col-md-10">
@@ -116,7 +116,7 @@
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                                     <?php else: ?>
                                         <tr>
-                                            <td colspan="5"><h4 class="alert alert-success">No Loan for this Cusomer!</h4></td>
+                                            <td colspan="5"><h4 class="alert alert-success">This Cusomer does not have any previous Loan!</h4></td>
                                         </tr>
                                     <?php endif; ?>
                                 </tbody>

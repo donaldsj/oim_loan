@@ -62,7 +62,7 @@
                                         <th colspan="5"><center><strong>REFEREES</strong></center></th>
                                     </tr>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>Name&nbsp;&nbsp;&nbsp;&nbsp;<a href="{!! route('create_referee', $customer->id) !!}">+Add Referee</a> </th>
                                         <th>Job</th>
                                         <th>Address</th>
                                         <th>Contacts</th>
@@ -86,7 +86,7 @@
                                         </tr>
                                     @endif                                                             
                                 </tbody>
-                            </table><a href="">+Add Referee</a>                             
+                            </table>                            
                         </div>
 
                         <div class="row col-md-10">
@@ -115,7 +115,7 @@
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan="5"><h4 class="alert alert-success">No Loan for this Cusomer!</h4></td>
+                                            <td colspan="5"><h4 class="alert alert-success">This Cusomer does not have any previous Loan!</h4></td>
                                         </tr>
                                     @endif
                                 </tbody>

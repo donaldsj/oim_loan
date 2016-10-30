@@ -9,7 +9,7 @@
         <!-- end breadcrumb -->
         <!-- begin page-header -->
         <h1 class="page-header">Customer Registration <small></small>
-            <a href="{!! URL::to('customers') !!}" class="btn btn-sm btn-primary m-r-5 m-b-5"><i class="fa fa-arrow-left m-r-5"></i>Back to customers</a>
+            <a href="{!! route('customers.show', $id) !!}" class="btn btn-sm btn-primary m-r-5 m-b-5"><i class="fa fa-arrow-left m-r-5"></i>Back to customer details</a>
         </h1>
 
         <!-- end page-header -->
@@ -21,7 +21,7 @@
                 <!-- begin panel -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Customer Registration form</h4>
+                        <h4 class="panel-title">Referee Registration form</h4>
                     </div>
 
                     <div class="panel-body">
@@ -31,7 +31,7 @@
 								<legend class="pull-left width-full">REFEREE'S INFORMATION</legend>
 								{!! Form::hidden('customer_id',$id) !!}
                                 <div class="row">                                	
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
 										<div class="form-group block1">
 											{!! Form::label('first_name', 'First Name') !!}
 											{!! Form::text('first_name', null, array('class'=>'form-control')) !!}
@@ -67,7 +67,7 @@
                                     <div class="col-md-6">
 										<div class="form-group">
 											{!! Form::label('region', 'Region') !!}
-											{!! Form::select('region', array('Dar es Salaam','Mwanza')) !!}
+											{!! Form::select('region', array('0'=>'','Arusha'=>'Arusha','Dar es Salaam'=>'Dar es Salaam','Dodoma'=>'Dodoma','Geita'=>'Geita','Iringa'=>'Iringa','Kagera'=>'Kagera','Katavi'=>'Katavi','Kigoma'=>'Kigoma','Kilimanjaro'=>'Kilimanjaro','Lindi'=>'Lindi','Manyara'=>'Manyara','Mara'=>'Mara','Mbeya'=>'Mbeya','Morogoro'=>'Morogoro','Mtwara'=>'Mtwara','Mwanza'=>'Mwanza','Njombe'=>'Njombe','Pemba North'=>'Pemba North','Pemba South'=>'Pemba South','Pwani'=>'Pwani','Rukwa'=>'Rukwa','Ruvuma'=>'Ruvuma','Shinyanga'=>'Shinyanga','Simiyu'=>'Simiyu','Singida'=>'Singida','Tabora'=>'Tabora','Tanga'=>'Tanga','Zanzibar North'=>'Zanzibar North','Zanzibar South and Central'=>'Zanzibar South and Central','Zanzibar West'=>'Zanzibar West'), null, array('class'=>'form-control')) !!}
 										</div>
                                     </div>
                                 </div>
@@ -141,3 +141,4 @@
     <!-- end #content -->
 
 @include('layouts.includes.footer')
+
