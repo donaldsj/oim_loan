@@ -19,15 +19,10 @@ class CreateRefereesTable extends Migration
             $table->string('first_name', 50);
             $table->string('second_name', 50)->nullable();
             $table->string('last_name', 50);
-            $table->string('gender', 8);
             $table->string('street_of_residence', 255);
-            $table->string('residence_type', 50);
-            $table->string('ward', 100);
-            $table->string('district', 100);
             $table->string('region', 100);
             $table->string('job', 255);
-            $table->string('work_location'); 
-            $table->string('postal_address', 255)->nullable();
+            $table->string('work_location');
             $table->string('phone_number', 255)->unique();
             $table->string('email', 255)->nullable();
             $table->string('relationship');

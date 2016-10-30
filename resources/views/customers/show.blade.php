@@ -31,37 +31,64 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th colspan="2">CUSTOMER</th>
-                                        <th colspan="2">REFEREE(s)</th>
+                                        <th colspan="2"><center><strong>CUSTOMER</strong></center></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Name: <strong>{!! $customer->first_name !!}&nbsp;{!! $customer->second_name !!}&nbsp;{!! $customer->last_name !!}</strong></td>
                                         <td rowspan="6"><img src="{!! asset('img/customers_photo/'.$customer->photo_url) !!}" width="" height="160px" /></td>
-                                        <td>Name: <strong>{!! $referees->first_name !!}&nbsp;{!! $referees->middle_name !!}&nbsp;{!! $referees->last_name !!}</strong></td>
-                                        <td rowspan="6"><img src="{!! asset('img/customers_photo/'.$referees->photo_url) !!}" width="" height="160px" /></td>
                                     </tr>
                                     <tr>
                                         <td>Job: <strong>{!! $customer->job !!}</strong></td>
-                                        <td>Title: <strong>{!! $referees->job !!}</strong></td>
                                     </tr>
                                     <tr>
                                         <td>Address: <strong>{!! $customer->street_of_residence !!}</strong></td>
-                                        <td>Residence: <strong>{!! $referees->street_of_residence !!}</strong></td>
                                     </tr>
                                     <tr>
                                         <td>Contacts: <strong>{!! $customer->phone_number !!}</strong></td>
-                                        <td>Mobile Phone: <strong>{!! $referees->phone_number !!}</strong></td>
                                     </tr>
                                     <tr>
                                         <td>Attending Officer: <strong>{!! $attending_officers->first_name !!}&nbsp;{!! $attending_officers->middle_name !!}&nbsp;{!! $attending_officers->last_name !!}</strong></td>
-                                        <td>Relationship: <strong>{!! $referees->relationship !!}</strong></td>
+                                        
                                     </tr>
                                                                       
                                 </tbody>
-                            </table>                            
+                            </table>
+
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th colspan="5"><center><strong>REFEREES</strong></center></th>
+                                    </tr>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Job</th>
+                                        <th>Address</th>
+                                        <th>Contacts</th>
+                                        <th>Relationship</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(count($referees) > 0)
+                                        @foreach($referees as $refer)
+                                            <tr>
+                                                <td>{!! $refer->first_name !!}&nbsp;{!! $refer->second_name !!}&nbsp;{!! $refer->last_name !!}</td>
+                                                <td>{!! $refer->job !!},&nbsp;{!! $refer->work_location !!}</td>
+                                                <td>{!! $refer->street_of_residence !!}</td>
+                                                <td>{!! $refer->phone_number !!}</td>
+                                                <td>{!! $refer->relationship !!}</td>
+                                            </tr>
+                                        @endforeach 
+                                    @else
+                                        <tr>
+                                            <td colspan="5"><h4 class="alert alert-warning">No Referee for this Cusomer!&nbsp;&nbsp;&nbsp;&nbsp;<a href="{!! route('create_referee', $customer->id) !!}">+Add Referee</a></h4></td>
+                                        </tr>
+                                    @endif                                                             
+                                </tbody>
+                            </table><a href="">+Add Referee</a>                             
                         </div>
+
                         <div class="row col-md-10">
                             <h3>PREVIOUS LOAN DETAILS</h3>
                             
@@ -96,10 +123,6 @@
                         </div>
                     </div>
                 
-                <div class="invoice-note invoice-footer">
-                    * Welcome at one icone microfinance<br />
-                    * If you have any questions concerning this printout please contact us
-                </div>
                 <div class="invoice-footer text-muted">
                     <p class="text-center m-b-5">
                         THANK YOU FOR CHOOSING ONE ICON MICROFINANCE

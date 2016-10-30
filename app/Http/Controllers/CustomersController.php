@@ -59,10 +59,10 @@ class CustomersController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user(); 
-       $validator = Validator::make($data = $request->all(), Customer::$rules);
+        $validator = Validator::make($data = $request->all(), Customer::$rules);
 
-       $data['dob'] = date('Y-m-d', strtotime($request->dob));
-       $data['employee_id'] = $user->id;
+        $data['dob'] = date('Y-m-d', strtotime($request->dob));
+        $data['employee_id'] = $user->id;
 
         if ($validator->fails())
         {
@@ -116,14 +116,8 @@ class CustomersController extends Controller
             return "Sorry, This data is not normal";
         }
 
-        $referee = DB::table('referees')->orderBy('id', 'DESC')->where('customer_id', $id)->first();
-        if ($referee != null) {
-            $referees = $referee;
-        }
-        else {
-            $referees = $user;
-        }
-              
+        $referees = DB::table('referees')->orderBy('id', 'DESC')->where('customer_id', $id)->get();
+                      
         $customer_loans = DB::table('loans')->where('customer_id', $id)->get();
                 
         return view('customers.show', ['customer' => Customer::findOrFail($id), 'referees'=>$referees, 'customer_loans'=>$customer_loans, 'attending_officers'=>$attending_officer, 'user' => $user]);

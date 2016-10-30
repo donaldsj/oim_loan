@@ -30,6 +30,10 @@ Route::group(['middleware' => 'auth'], function () {
 			'as' => 'customer.destroy'
 		));
 
+	//Referees
+	Route::get('referee/customer/{id}', 'RefereesController@create')->name('create_referee');
+	Route::post('save/referee', 'RefereesController@save');
+
 	//Employees
 	Route::get('employees', array(
 			'uses' => 'EmployeesController@index',

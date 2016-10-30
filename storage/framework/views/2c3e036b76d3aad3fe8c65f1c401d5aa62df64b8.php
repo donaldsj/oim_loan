@@ -32,37 +32,64 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th colspan="2">CUSTOMER</th>
-                                        <th colspan="2">REFEREE(s)</th>
+                                        <th colspan="2"><center><strong>CUSTOMER</strong></center></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Name: <strong><?php echo $customer->first_name; ?>&nbsp;<?php echo $customer->second_name; ?>&nbsp;<?php echo $customer->last_name; ?></strong></td>
                                         <td rowspan="6"><img src="<?php echo asset('img/customers_photo/'.$customer->photo_url); ?>" width="" height="160px" /></td>
-                                        <td>Name: <strong><?php echo $referees->first_name; ?>&nbsp;<?php echo $referees->middle_name; ?>&nbsp;<?php echo $referees->last_name; ?></strong></td>
-                                        <td rowspan="6"><img src="<?php echo asset('img/customers_photo/'.$referees->photo_url); ?>" width="" height="160px" /></td>
                                     </tr>
                                     <tr>
                                         <td>Job: <strong><?php echo $customer->job; ?></strong></td>
-                                        <td>Title: <strong><?php echo $referees->job; ?></strong></td>
                                     </tr>
                                     <tr>
                                         <td>Address: <strong><?php echo $customer->street_of_residence; ?></strong></td>
-                                        <td>Residence: <strong><?php echo $referees->street_of_residence; ?></strong></td>
                                     </tr>
                                     <tr>
                                         <td>Contacts: <strong><?php echo $customer->phone_number; ?></strong></td>
-                                        <td>Mobile Phone: <strong><?php echo $referees->phone_number; ?></strong></td>
                                     </tr>
                                     <tr>
                                         <td>Attending Officer: <strong><?php echo $attending_officers->first_name; ?>&nbsp;<?php echo $attending_officers->middle_name; ?>&nbsp;<?php echo $attending_officers->last_name; ?></strong></td>
-                                        <td>Relationship: <strong><?php echo $referees->relationship; ?></strong></td>
+                                        
                                     </tr>
                                                                       
                                 </tbody>
-                            </table>                            
+                            </table>
+
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th colspan="5"><center><strong>REFEREES</strong></center></th>
+                                    </tr>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Job</th>
+                                        <th>Address</th>
+                                        <th>Contacts</th>
+                                        <th>Relationship</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if(count($referees) > 0): ?>
+                                        <?php $__currentLoopData = $referees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $refer): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                            <tr>
+                                                <td><?php echo $refer->first_name; ?>&nbsp;<?php echo $refer->second_name; ?>&nbsp;<?php echo $refer->last_name; ?></td>
+                                                <td><?php echo $refer->job; ?>,&nbsp;<?php echo $refer->work_location; ?></td>
+                                                <td><?php echo $refer->street_of_residence; ?></td>
+                                                <td><?php echo $refer->phone_number; ?></td>
+                                                <td><?php echo $refer->relationship; ?></td>
+                                            </tr>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?> 
+                                    <?php else: ?>
+                                        <tr>
+                                            <td colspan="5"><h4 class="alert alert-warning">No Referee for this Cusomer!&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo route('create_referee', $customer->id); ?>">+Add Referee</a></h4></td>
+                                        </tr>
+                                    <?php endif; ?>                                                             
+                                </tbody>
+                            </table><a href="">+Add Referee</a>                             
                         </div>
+
                         <div class="row col-md-10">
                             <h3>PREVIOUS LOAN DETAILS</h3>
                             
@@ -97,10 +124,6 @@
                         </div>
                     </div>
                 
-                <div class="invoice-note invoice-footer">
-                    * Welcome at one icone microfinance<br />
-                    * If you have any questions concerning this printout please contact us
-                </div>
                 <div class="invoice-footer text-muted">
                     <p class="text-center m-b-5">
                         THANK YOU FOR CHOOSING ONE ICON MICROFINANCE

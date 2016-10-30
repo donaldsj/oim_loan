@@ -24,42 +24,44 @@
                                <!--  <a href="{!! URL::to('loans') !!}" class="btn btn-sm btn-primary m-r-5 m-b-5"><i class="fa fa-arrow-left m-r-5"></i>Back to Loans list</a> -->
                             </span>
                         </h3>
-                        <div class="row col-md-8">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Customer (Owner): <h4>{!! $officer->fname !!}&nbsp;{!! $officer->sname !!}&nbsp;{!! $officer->lname !!}</h4></th>
-                                        <th>Loan Code (#): 
-                                            
-                                            @if(($loan->loan_code != NULL) || ($loan->loan_code != ""))
-                                                <h4>{!! $loan->loan_code !!}</h4>
-                                            @else
-                                                <h4><a href="{!! route('loan.confirm', $loan->id) !!}" class="btn btn-sm btn-warning">Confirm</a></h4>
-                                            @endif
-                                            
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Attending Officer: <strong>{!! $officer->first_name !!}&nbsp;{!! $officer->middle_name !!}&nbsp;{!! $officer->last_name !!}</strong></td>
-                                        <td>Amount (Tsh): <strong>{!! number_format($loan->loan_amount,2,'.',',') !!}&nbsp;TZS</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Borrow date: <strong>{!! date("d/m/Y", strtotime($loan->loan_date)) !!}</strong></td>
-                                        <td>Returned amount: <strong>{!! number_format($total_returns,2,'.',',') !!}&nbsp;TZS</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Purpose: <strong>{!! $loan->loan_purpose !!}</strong></td>
-                                        <td>Penalty: <strong>{!! $loan->customer_id !!}</strong></td>
-                                    </tr>
-                                                                    
-                                </tbody>
-                            </table>
-                        </div>
+                            <div class="row col-md-8">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Customer (Owner): <h4>{!! $officer->fname !!}&nbsp;{!! $officer->sname !!}&nbsp;{!! $officer->lname !!}</h4></th>
+                                            <th>Loan Code (#): 
+                                                
+                                                @if(($loan->loan_code != NULL) || ($loan->loan_code != ""))
+                                                    <h4>{!! $loan->loan_code !!}</h4>
+                                                @else
+                                                    <h4><a href="{!! route('loan.confirm', $loan->id) !!}" class="btn btn-sm btn-warning">Confirm</a></h4>
+                                                @endif
+                                                
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Attending Officer: <strong>{!! $officer->first_name !!}&nbsp;{!! $officer->middle_name !!}&nbsp;{!! $officer->last_name !!}</strong></td>
+                                            <td>Amount (Tsh): <strong>{!! number_format($loan->loan_amount,2,'.',',') !!}&nbsp;TZS</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Borrow date: <strong>{!! date("d/m/Y", strtotime($loan->loan_date)) !!}</strong></td>
+                                            <td>Returned amount: <strong>{!! number_format($total_returns,2,'.',',') !!}&nbsp;TZS</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Purpose: <strong>{!! $loan->loan_purpose !!}</strong></td>
+                                            <td>Penalty: <strong>{!! $loan->customer_id !!}</strong></td>
+                                        </tr>
+                                                                        
+                                    </tbody>
+                                </table>
+                            <!-- </div> -->
+                        
+                                                
                         <div style="clear: both;"></div>
                         <h4>RETURN DETAILS</h4>
-                        <div class="row col-md-8">
+                        <!-- <div class="row col-md-8"> -->
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -86,6 +88,19 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="row col-md-4">                    
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">                                        
+                                        <h4 class="panel-title">Comments</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div>
+                                            <p>Paragraph of what a user has commented shall appear here..</p>
+                                            <h4>By: <small>Donald SJ , Tuesday 03 jun 2016</small></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
 
                                  
@@ -104,7 +119,7 @@
                 <div class="row col-md-8">
                         <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-info"><i class="fa fa-print m-r-5"></i> Print</a>&nbsp;&nbsp;&nbsp;&nbsp;
                         @if(($loan->confirmed == 0) && ($loan->loan_code == ""))
-                            <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-danger"><i class="fa fa-trash m-r-5"></i> Delete this loan!</a>
+                            <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash m-r-5"></i> Delete this loan!</a>
                         @endif
                 </div>
                 <div style="clear: both;"></div>

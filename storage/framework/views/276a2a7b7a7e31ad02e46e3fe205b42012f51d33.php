@@ -60,6 +60,7 @@
                 <div class="login-content">
                     <?php echo Form::open(['url' => 'login', 'method' => 'POST', 'class' => 'margin-bottom-0']); ?>
 
+                        <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
                         <!-- <form action="" method="POST" class="margin-bottom-0"> -->
                             <div class="form-group m-b-15">
                                 <input type="text" name="log" class="form-control input-lg" placeholder="Email Address" />
