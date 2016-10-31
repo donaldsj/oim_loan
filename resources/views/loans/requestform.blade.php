@@ -18,19 +18,19 @@
             <!-- begin invoice -->
             <div class="invoice">
                     <div class="table-responsive">                        
-                        <span class="pull-left hidden-print">
-                            <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-success m-b-10"><i class="fa fa-print m-r-5"></i> Print</a>
-                        </span> 
-
-                        <div class="row col-md-10">
-                            <img src="{!! asset('img/icon.png') !!}" />
-                            <h2>ONE ICON MICROFINANCE LIMITED</h2>                            
+                        
+                        <div class="row col-md-10" style="text-align: center;">
+                            <img src="{!! asset('img/OneIcon.png') !!}" width="150px" height="150px" />
+                            <h2>ONE ICON MICROFINANCE LIMITED</h2> 
+                            <hr style="color: #000000;" />                           
                         </div>
 
-                        <h3>
-                            LOAN REQUEST FORM                            
-                        </h3>
-
+                        <div class="row col-md-10">
+                            <h3>
+                                LOAN REQUEST FORM                            
+                            </h3>
+                        </div>
+                        
                         <div class="row col-md-10">
                             <h4>1. IMPORTANT NOTICE</h4>
                             <ol>
@@ -45,14 +45,14 @@
                             <table class="table table-bordered">
                                 <h4>2. CUSTOMER DETAILS</h4>
                                 <thead>
-                                    <tr>
+                                   <!--  <tr>
                                         <th colspan="2"><center><strong>CUSTOMER</strong></center></th>
-                                    </tr>
+                                    </tr> -->
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Name: <strong>name</strong></td>
-                                        <td rowspan="6"><img src="" width="" height="160px" /></td>
+                                        <td rowspan="6"><img src="{!! asset('img/customers_photo/1477828870-sam.jpg') !!}" width="" height="160px" /></td>
                                     </tr>
                                     <tr>
                                         <td>Job: <strong>Job</strong></td>
@@ -74,9 +74,9 @@
                             <table class="table table-bordered">
                                 <h4>3. REFEREES DETAILS</h4>
                                 <thead>
-                                    <tr>
+                                   <!--  <tr>
                                         <th colspan="5"><center><strong>REFEREES</strong></center></th>
-                                    </tr>
+                                    </tr> -->
                                     <tr>
                                         <th>Name</th>
                                         <th>Job</th>
@@ -138,6 +138,9 @@
                         </div>
 
                     </div>
+                    <span class="pull-left hidden-print">
+                            <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-success m-b-10"><i class="fa fa-print m-r-5"></i> Print</a>
+                        </span> 
                 
                 <div class="invoice-footer text-muted">
                     <p class="text-center m-b-5">
