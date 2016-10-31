@@ -211,9 +211,12 @@ class LoansController extends Controller
         return redirect()->route('loan.details', $id);
 
     }
+<<<<<<< HEAD
 
     public function requestform(){
         $user = Auth::user();
         return view('loans.requestform', compact('user'));
     }
+=======
+>>>>>>> 7c19223878a63b429b46823cb66626200e7cba97
 }
