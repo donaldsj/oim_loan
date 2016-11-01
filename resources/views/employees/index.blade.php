@@ -32,13 +32,13 @@
                         </div>
 
                         
-                        
+                        <!-- 
                         <div class="alert alert-success col-md-8 center fade in">
                             <button type="button" class="close" data-dismiss="alert">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             Success message
-                        </div>
+                        </div> -->
                         <div class="panel-body" id="printable_doc">
 
                             <div class="">
