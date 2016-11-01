@@ -46,7 +46,7 @@
                         <div class="widget widget-stats bg-purple">
     						<div class="stats-icon"><i class="fa fa-check-square-o"></i></div>
     						<div class="stats-info">
-    							<h4>RETURNS</h4>
+    							<h4>RETURNED AMOUNT</h4>
     							<p>{!! number_format($returned, 2, '.', ',') !!}&nbsp;TZS</p>	
     						</div>
     					</div>
@@ -88,7 +88,7 @@
 										<!-- <th>PHYSICAL ADDRESS</th> -->
 										<th>CONTACTS</th>
 										<th>LOAN AMOUNT (TZS)</th>
-										<th>RETURN AMOUNT (TZS)</th>
+										<th>RETURNED AMOUNT (TZS)</th>
 									</tr>
 								</thead>
 								<tbody>

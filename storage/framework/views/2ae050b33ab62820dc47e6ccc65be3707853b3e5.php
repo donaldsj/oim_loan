@@ -35,21 +35,14 @@
 				                                    <div class="form-group">
 				                                    	<label for="loan_code">LOAN CODE / ID:</label>
 				                                    	<select name="loan_code" class="form-control" data-parsley-group="wizard-step-1">
-				                                    		<?php $__currentLoopData = $loan_codes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $codes): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+				                                    		<option value="">-- select --</option>
+				                                    		<?php $__currentLoopData = $loan_codes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $codes): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>				                                    			
 				                                    			<option value="<?php echo $codes->loan_code; ?>"><?php echo $codes->loan_code; ?></option>
 				                                    		<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 				                                    	</select>
 				                                    </div>
 				                                </div>				                                
 			                                </div>
-                                            <div class="row">
-                                            	<div class="col-md-4">                                            		
-				                                	<div class="form-group">
-				                                    	<label for="return_date">DATE:</label>		                  	                  
-				                                        <input type="text" name="return_date" class="form-control" id="datepicker-autoClose" placeholder="" />
-				                                    </div>
-				                                </div>
-				                            </div>
                                             <div class="row">
                                                 <div class="col-md-6">
 													<div class="form-group block1">

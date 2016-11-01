@@ -18,6 +18,8 @@ class CreateLoansTable extends Migration
             $table->integer('customer_id');
             $table->date('loan_date');
             $table->double('loan_amount');
+            $table->double('interest');
+            $table->double('penalty')->default(0);;
             $table->string('loan_purpose');
             $table->string('income_source');
             $table->string('duration', 255);

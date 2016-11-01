@@ -28,12 +28,12 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Customer (Owner): <h4>{!! $officer->fname !!}&nbsp;{!! $officer->sname !!}&nbsp;{!! $officer->lname !!}</h4></th>
+                                            <th>Customer (Owner): <h4><a href="{!! route('customers.show', $officer->cID) !!}">{!! $officer->fname !!}&nbsp;{!! $officer->sname !!}&nbsp;{!! $officer->lname !!}</a></h4></th>
                                             <th>Loan Code (#): 
                                                 
                                                 @if(($loan->loan_code != NULL) || ($loan->loan_code != ""))
                                                     <h4>{!! $loan->loan_code !!}</h4>
-                                                @else
+                                                @elseif(Auth::user()->role_id == 1)
                                                     <h4><a href="{!! route('loan.confirm', $loan->id) !!}" class="btn btn-sm btn-warning">Confirm</a></h4>
                                                 @endif
                                                 
@@ -46,12 +46,16 @@
                                             <td>Amount (Tsh): <strong>{!! number_format($loan->loan_amount,2,'.',',') !!}&nbsp;TZS</strong></td>
                                         </tr>
                                         <tr>
-                                            <td>Borrow date: <strong>{!! date("d/m/Y", strtotime($loan->loan_date)) !!}</strong></td>
+                                            <td>Borrow date: <strong>{!! date("d/m/Y", strtotime($loan->loan_date)) !!}</strong>, Due date: <strong>{!! date("d/m/Y", strtotime($loan->due_date)) !!}</strong></td>
                                             <td>Returned amount: <strong>{!! number_format($total_returns,2,'.',',') !!}&nbsp;TZS</strong></td>
                                         </tr>
                                         <tr>
                                             <td>Purpose: <strong>{!! $loan->loan_purpose !!}</strong></td>
-                                            <td>Penalty: <strong>{!! $loan->customer_id !!}</strong></td>
+                                            <td>Interest: <strong>{!! number_format($loan->interest,2,'.',',') !!}&nbsp;TZS</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Penalty: <strong>{!! number_format($loan->penalty,2,'.',',') !!}&nbsp;TZS</strong></td>
+                                            <td>Total Loan Amount: <strong>{!! number_format($loan->loan_amount+$loan->interest+$loan->penalty,2,'.',',') !!}&nbsp;TZS</strong></td>
                                         </tr>
                                                                         
                                     </tbody>
@@ -66,7 +70,7 @@
                                 <thead>
                                     <tr>
                                         <th>Date</th>
-                                        <th>Amount</th>
+                                        <th>Amount (TZS)</th>
                                         <th>Teller</th>
                                     </tr>
                                 </thead>
@@ -76,7 +80,7 @@
                                             <tr>
                                                 <td>{!! $loan_return->return_date !!}</td>
                                                 <td>{!! number_format($loan_return->return_amount, 2, '.', ',') !!}</td>
-                                                <td>{!! $loan_return->user_id !!}</td>
+                                                <td>{!! $loan_return->first_name !!}&nbsp{!! $loan_return->middle_name !!}&nbsp{!! $loan_return->last_name !!}</td>
                                                 
                                             </tr>
                                         @endforeach

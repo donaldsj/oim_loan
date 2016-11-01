@@ -12,7 +12,6 @@ class Loan extends Model {
     // Add your validation rules here
     public static $rules = [
          'customer_id' => 'required',
-         'loan_date' => 'required',
          'loan_amount' => 'required',
          'loan_purpose' => 'required',
          'income_source' => 'required',
@@ -21,7 +20,7 @@ class Loan extends Model {
 
    /* protected $table = "customers";*/
 
-    protected $fillable = ['customer_id','loan_date', 'loan_amount', 'loan_purpose', 'income_source', 'duration', 'balance', 'due_date'];
+    protected $fillable = ['customer_id','loan_date', 'loan_amount', 'interest', 'penalty', 'loan_purpose', 'income_source', 'duration', 'balance', 'due_date'];
 
 
 }

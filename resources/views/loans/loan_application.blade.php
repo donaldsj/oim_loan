@@ -28,15 +28,7 @@
                                         <fieldset>
                                             <legend class="pull-left width-full">LOAN INFORMATION</legend>
                                             <input type="hidden" name="customer_id" value="{!! $id !!}">
-                                            <div class="row">
-                                            	<div class="col-md-4">                                            		
-				                                	<div class="form-group">
-				                                    	<label for="loan_date">Date:</label>
-				                                        <input type="text" name="loan_date" class="form-control" id="datepicker-autoClose" placeholder="" />
-				                                    </div>
-				                                </div>
-				                            </div>
-
+                                            
                                             <div class="row">
                                                 <div class="col-md-4">
 													<div class="form-group block1">
@@ -45,6 +37,14 @@
 													</div>
                                                 </div>    
                                             </div>
+                                            <div class="row">                                            
+				                                <div class="col-md-4">
+				                                    <div class="form-group">
+				                                    	<label for="rate">INTEREST RATE (%)</label>
+				                                    	<input type="number" name="rate" class="form-control" />			                                    	
+				                                    </div>
+				                                </div>				                                
+			                                </div>
                                             <div class="row">
                                                 <div class="col-md-6">
 													<div class="form-group block1">
@@ -61,19 +61,11 @@
 													</div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                            	<div class="col-md-4">                                            		
-				                                	<div class="form-group">
-				                                    	<label for="due_date">Due Date:</label>
-				                                        <input type="date" name="due_date" class="form-control" id="datepicker-autoClose" placeholder="" />
-				                                    </div>
-				                                </div>
-				                            </div>
                                             <div class="row">                                            
 				                                <div class="col-md-4">
 				                                    <div class="form-group">
-				                                    	<label for="duration">LOAN DURATION</label>
-				                                    	<input type="text" name="duration" placeholder="" class="form-control" data-parsley-group="wizard-step-1" />
+				                                    	<label for="duration">LOAN DURATION (Months)</label>
+				                                    	<input type="number" name="duration" class="form-control" /><span>Month(s)</span>				                                    	
 				                                    </div>
 				                                </div>				                                
 			                                </div>	

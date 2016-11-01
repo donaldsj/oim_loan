@@ -62,7 +62,7 @@
 	                                            <td><a href="{!! route('loan.details', $loan->id) !!}">{!! number_format($loan->loan_amount,2,'.',',') !!}</a></td>
 	                                            <td>{!! date("d-m-Y", strtotime($loan->loan_date)) !!}</td>
 	                                            <td>{!! $loan->loan_purpose !!}</td>
-	                                            <td>{!! $loan->duration !!}</td>
+	                                            <td>{!! $loan->duration !!} Months</td>
 	                                            <td>{!! date("d-m-Y", strtotime($loan->due_date)) !!}</td>
 	                                            <td>{!! ($loan->status == 0)? "open" : "Closed" !!}</td>
 	                                            <td>{!! ($loan->confirmed == 0)? '<i class="fa fa-times"></i>' : '<i class="fa fa-check"></i>' !!}</td>

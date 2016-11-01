@@ -28,12 +28,12 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Customer (Owner): <h4><?php echo $officer->fname; ?>&nbsp;<?php echo $officer->sname; ?>&nbsp;<?php echo $officer->lname; ?></h4></th>
+                                            <th>Customer (Owner): <h4><a href="<?php echo route('customers.show', $officer->cID); ?>"><?php echo $officer->fname; ?>&nbsp;<?php echo $officer->sname; ?>&nbsp;<?php echo $officer->lname; ?></a></h4></th>
                                             <th>Loan Code (#): 
                                                 
                                                 <?php if(($loan->loan_code != NULL) || ($loan->loan_code != "")): ?>
                                                     <h4><?php echo $loan->loan_code; ?></h4>
-                                                <?php else: ?>
+                                                <?php elseif(Auth::user()->role_id == 1): ?>
                                                     <h4><a href="<?php echo route('loan.confirm', $loan->id); ?>" class="btn btn-sm btn-warning">Confirm</a></h4>
                                                 <?php endif; ?>
                                                 
@@ -46,12 +46,16 @@
                                             <td>Amount (Tsh): <strong><?php echo number_format($loan->loan_amount,2,'.',','); ?>&nbsp;TZS</strong></td>
                                         </tr>
                                         <tr>
-                                            <td>Borrow date: <strong><?php echo date("d/m/Y", strtotime($loan->loan_date)); ?></strong></td>
+                                            <td>Borrow date: <strong><?php echo date("d/m/Y", strtotime($loan->loan_date)); ?></strong>, Due date: <strong><?php echo date("d/m/Y", strtotime($loan->due_date)); ?></strong></td>
                                             <td>Returned amount: <strong><?php echo number_format($total_returns,2,'.',','); ?>&nbsp;TZS</strong></td>
                                         </tr>
                                         <tr>
                                             <td>Purpose: <strong><?php echo $loan->loan_purpose; ?></strong></td>
-                                            <td>Penalty: <strong><?php echo $loan->customer_id; ?></strong></td>
+                                            <td>Interest: <strong><?php echo number_format($loan->interest,2,'.',','); ?>&nbsp;TZS</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Penalty: <strong><?php echo number_format($loan->penalty,2,'.',','); ?>&nbsp;TZS</strong></td>
+                                            <td>Total Loan Amount: <strong><?php echo number_format($loan->loan_amount+$loan->interest+$loan->penalty,2,'.',','); ?>&nbsp;TZS</strong></td>
                                         </tr>
                                                                         
                                     </tbody>
@@ -66,7 +70,7 @@
                                 <thead>
                                     <tr>
                                         <th>Date</th>
-                                        <th>Amount</th>
+                                        <th>Amount (TZS)</th>
                                         <th>Teller</th>
                                     </tr>
                                 </thead>
@@ -76,7 +80,7 @@
                                             <tr>
                                                 <td><?php echo $loan_return->return_date; ?></td>
                                                 <td><?php echo number_format($loan_return->return_amount, 2, '.', ','); ?></td>
-                                                <td><?php echo $loan_return->user_id; ?></td>
+                                                <td><?php echo $loan_return->first_name; ?>&nbsp<?php echo $loan_return->middle_name; ?>&nbsp<?php echo $loan_return->last_name; ?></td>
                                                 
                                             </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
@@ -89,18 +93,40 @@
                             </table>
                         </div>
                         <div class="row col-md-4">                    
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">                                        
-                                        <h4 class="panel-title">Comments</h4>
+                            <div class="panel panel-default panel-bodered">
+                                <div class="panel-heading">                                        
+                                    <h4 class="panel-title">COMMENTS</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <div style="max-height: 200px; overflow-y: scroll;">
+                                        <?php if(count($comments) > 0): ?>
+                                            <?php $__currentLoopData = $comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                                <h5><a href=""><?php echo $comment->first_name; ?>&nbsp;<?php echo $comment->middle_name; ?>&nbsp;<?php echo $comment->last_name; ?></a> <small><?php echo date('D, d M Y H:i', strtotime($comment->created_at)); ?></small></h5>
+                                                <p><?php echo $comment->comments; ?></p>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                                        <?php else: ?>
+                                            <p class="alert alert-info">No comments for this Loan.!</p>
+                                        <?php endif; ?>
+                                        
                                     </div>
-                                    <div class="panel-body">
-                                        <div>
-                                            <p>Paragraph of what a user has commented shall appear here..</p>
-                                            <h4>By: <small>Donald SJ , Tuesday 03 jun 2016</small></h4>
-                                        </div>
+
+                                    <div>
+                                        <?php echo Form::open(['action'=>'CommentsController@store', 'method'=>'POST', 'name'=>'loan_comment', 'data-parsley-validate'=>'true']); ?>
+
+                                            <?php echo Form::hidden('loan',$loan->id); ?>
+
+                                            <?php echo Form::hidden('officer',$user->id); ?>
+
+                                            <?php echo Form::textarea('comments', null, array('rows'=>'2', 'class'=>'form-control', 'placeholder'=>'Type your comment here..')); ?>
+
+                                            <?php echo Form::submit('Add Comment', array('class'=>'btn btn-sm btn-primary pull-right')); ?>
+
+                                        <?php echo Form::close(); ?>
+
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
 
                                  

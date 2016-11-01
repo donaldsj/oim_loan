@@ -98,7 +98,7 @@
                                         <th>CODE</th>
                                         <th>PURPOSE</th>
                                         <th>DATE</th>
-                                        <th>AMOUNT</th>
+                                        <th>AMOUNT (TZS)</th>
                                         <th>STATUS</th>
                                     </tr>
                                 </thead>
@@ -109,7 +109,7 @@
                                                 <td><a href="{!! route('loan.details', $cust_loans->id) !!}">{!! ($cust_loans->loan_code == "")? "Not Confirmed!" : $cust_loans->loan_code !!}</a></td>
                                                 <td>{!! $cust_loans->loan_purpose !!}</td>
                                                 <td>{!! $cust_loans->loan_date !!}</td>
-                                                <td>TSH.{!! $cust_loans->loan_amount !!}</td>
+                                                <td>{!! number_format($cust_loans->loan_amount,2,'.',',') !!}</td>
                                                 <td>{!! ($cust_loans->status == 0)? "Open" : "Closed" !!}</td>
                                             </tr>
                                         @endforeach

@@ -58,11 +58,11 @@
                                     	<?php $__currentLoopData = $loans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $loan): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                     	<!-- <a href=""> -->
 	                                        <tr>
-	                                            <td><?php echo $loan->first_name; ?>&nbsp;<?php echo $loan->second_name; ?>&nbsp;<?php echo $loan->last_name; ?></td>
+	                                            <td><a href="<?php echo route('loan.requestform'); ?>"><?php echo $loan->first_name; ?>&nbsp;<?php echo $loan->second_name; ?>&nbsp;<?php echo $loan->last_name; ?></a></td>
 	                                            <td><a href="<?php echo route('loan.details', $loan->id); ?>"><?php echo number_format($loan->loan_amount,2,'.',','); ?></a></td>
 	                                            <td><?php echo date("d-m-Y", strtotime($loan->loan_date)); ?></td>
 	                                            <td><?php echo $loan->loan_purpose; ?></td>
-	                                            <td><?php echo $loan->duration; ?></td>
+	                                            <td><?php echo $loan->duration; ?> Months</td>
 	                                            <td><?php echo date("d-m-Y", strtotime($loan->due_date)); ?></td>
 	                                            <td><?php echo ($loan->status == 0)? "open" : "Closed"; ?></td>
 	                                            <td><?php echo ($loan->confirmed == 0)? '<i class="fa fa-times"></i>' : '<i class="fa fa-check"></i>'; ?></td>

@@ -99,7 +99,7 @@
                                         <th>CODE</th>
                                         <th>PURPOSE</th>
                                         <th>DATE</th>
-                                        <th>AMOUNT</th>
+                                        <th>AMOUNT (TZS)</th>
                                         <th>STATUS</th>
                                     </tr>
                                 </thead>
@@ -110,7 +110,7 @@
                                                 <td><a href="<?php echo route('loan.details', $cust_loans->id); ?>"><?php echo ($cust_loans->loan_code == "")? "Not Confirmed!" : $cust_loans->loan_code; ?></a></td>
                                                 <td><?php echo $cust_loans->loan_purpose; ?></td>
                                                 <td><?php echo $cust_loans->loan_date; ?></td>
-                                                <td>TSH.<?php echo $cust_loans->loan_amount; ?></td>
+                                                <td><?php echo number_format($cust_loans->loan_amount,2,'.',','); ?></td>
                                                 <td><?php echo ($cust_loans->status == 0)? "Open" : "Closed"; ?></td>
                                             </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>

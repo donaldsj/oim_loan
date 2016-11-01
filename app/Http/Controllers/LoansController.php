@@ -14,6 +14,8 @@ use Response;
 use Validator;
 use Redirect;
 
+use Carbon\Carbon;
+
 
 class LoansController extends Controller
 {
@@ -66,9 +68,18 @@ class LoansController extends Controller
         $user = Auth::user();
         $validator = Validator::make($data = $request->all(), Loan::$rules);
 
+        $data = $request->all();
+        
         $data['balance'] = 0;
-        $data['loan_date'] = date('Y-m-d', strtotime($request->loan_date));
-        $data['due_date'] = date('Y-m-d', strtotime($request->due_date));
+
+        $data['loan_date'] = date('Y-m-d');
+
+        //dd($data);
+
+        $dt = Carbon::parse(date('Y-m-d'));
+        $data['due_date'] = $dt->addMonths($request->duration)->format('Y-m-d');
+
+        $data['interest'] = (($request->rate*$request->loan_amount)/100);
 
         if ($validator->fails())
         {
@@ -78,7 +89,7 @@ class LoansController extends Controller
         $loan = Loan::create($data);
         if($loan){
            /* return view('loans', compact('user'));*/
-           return redirect('loans');
+           return redirect()->route('loan.details', $loan->id);
         }
     }
 
@@ -94,6 +105,8 @@ class LoansController extends Controller
 
         $returns = DB::table('loans_returns as r')
                     ->join('loans as l', 'r.loan_code', '=', 'l.loan_code')
+                    ->join('users as u', 'r.user_id', '=', 'u.id')
+                    ->select('r.*', 'u.id as uID', 'u.first_name', 'u.middle_name', 'u.last_name')
                     ->where('l.id', $id)->get();
 
         $tellers = DB::table('users as u')
@@ -110,7 +123,7 @@ class LoansController extends Controller
         $officers = DB::table('users as u')
                     ->join('customers as c', 'u.id', '=', 'c.employee_id' )
                     ->join('loans as l', 'c.id', '=', 'l.customer_id')
-                    ->select('c.first_name as fname', 'c.second_name as sname', 'c.last_name as lname', 'u.first_name', 'u.middle_name', 'u.last_name')
+                    ->select('c.id as cID', 'c.first_name as fname', 'c.second_name as sname', 'c.last_name as lname', 'u.id as uID', 'u.first_name', 'u.middle_name', 'u.last_name')
                     ->where('l.id', $id)->orderBy('u.id', 'DESC')->first();              
         if (!is_null($officers)) {
             $officer = $officers;
@@ -183,7 +196,7 @@ class LoansController extends Controller
         $validator = Validator::make($data = $request->all(), LoansReturn::$rules);
 
         $data['user_id'] = $user->id;
-        $data['return_date'] = date('Y-m-d', strtotime($request->return_date));
+        $data['return_date'] = date('Y-m-d');
 
         if ($validator->fails())
         {
