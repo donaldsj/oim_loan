@@ -55,7 +55,7 @@
                                         </tr>
                                         <tr>
                                             <td>Penalty: <strong>{!! number_format($loan->penalty,2,'.',',') !!}&nbsp;TZS</strong></td>
-                                            <td>Total Loan Amount: <strong>{!! number_format($loan->loan_amount+$loan->interest+$loan->penalty,2,'.',',') !!}&nbsp;TZS</strong></td>
+                                            <td>Total Return Amount: <strong>{!! number_format($loan->loan_amount+$loan->interest+$loan->penalty,2,'.',',') !!}&nbsp;TZS</strong></td>
                                         </tr>
                                                                         
                                     </tbody>
