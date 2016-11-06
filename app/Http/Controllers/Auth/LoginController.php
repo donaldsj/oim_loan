@@ -51,7 +51,7 @@ class LoginController extends Controller
             $this->fireLockoutEvent($request);
 
             return redirect('login')
-                ->with('error', trans('auth.logintest'))
+                ->with('error', trans('auth.login'))
                 ->withInput($request->only('log'));
         }
 
@@ -70,7 +70,7 @@ class LoginController extends Controller
             }
 
             return redirect('login')
-                ->with('error', trans('auth.logintest'))
+                ->with('error', trans('auth.login'))
                 ->withInput($request->only('log'));
         }
 

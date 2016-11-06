@@ -58,6 +58,15 @@
                 <!-- end login-header -->
                 <!-- begin login-content -->
                 <div class="login-content">
+
+                    <?php if($errors->any()): ?>
+                        <div class="alert alert-danger">
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                <p><?php echo e($error); ?></p>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                        </div>
+                    <?php endif; ?>
+                    
                     <?php echo Form::open(['url' => 'login', 'method' => 'POST', 'class' => 'margin-bottom-0']); ?>
 
                         <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">

@@ -58,6 +58,15 @@
                 <!-- end login-header -->
                 <!-- begin login-content -->
                 <div class="login-content">
+
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
+                    
                     {!! Form::open(['url' => 'login', 'method' => 'POST', 'class' => 'margin-bottom-0']) !!}
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <!-- <form action="" method="POST" class="margin-bottom-0"> -->
