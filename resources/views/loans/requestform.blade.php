@@ -16,7 +16,7 @@
             </div>
             
             <!-- begin invoice -->
-            <div class="invoice">
+            <div class="invoice col-md-10" id="printable_doc">
                     <div class="table-responsive">                        
                         
                         <div class="row col-md-10" style="text-align: center;">
@@ -139,7 +139,7 @@
 
                     </div>
                     <span class="pull-left hidden-print">
-                            <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-success m-b-10"><i class="fa fa-print m-r-5"></i> Print</a>
+                            <a href="javascript:PrintDiv('printable_doc');" class="btn btn-primary m-r-5 m-b-5"><i class="fa fa-print left"></i>Print</a>
                         </span> 
                 
                 <div class="invoice-footer text-muted">
@@ -156,4 +156,15 @@
             <!-- end invoice -->
         </div>
         <!-- end #content -->
+        <script type="text/javascript">
+            function PrintDiv(divToPrint) 
+                      {    
+                        var restorepoint = document.body.innerHTML;
+                        var printcontent = document.getElementById('printable_doc').innerHTML;
+
+                        document.body.innerHTML = printcontent;
+                        window.print();
+                        document.body.innerHTML = restorepoint;
+                       }
+    </script>
 @include('layouts.includes.footer')
