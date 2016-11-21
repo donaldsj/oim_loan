@@ -8,11 +8,11 @@
           
         </ol> -->
         <!-- begin wizard step-1 -->
-        <div class="wizard-step-1">
+        <div class="wizard-step-1">           
             <fieldset>
                 <legend class="pull-left width-full">Identification</legend>
 
-        {!! Form::open(['route' => 'employees.store', 'method'=>'POST', 'class' => '']) !!}
+                {!! Form::open(['route' => 'employees.store', 'method'=>'POST', 'class' => '']) !!}
 
                 <!-- begin row -->
                 <div class="row">
@@ -23,7 +23,7 @@
                         {!! Form::text('first_name',null,['placeholder'=>'Enter First Name', 'class'=>'form-control', 'autofocus']) !!}
 
                         @if($errors->has('first_name'))
-                        <p style="color:red;">{!! $errors->first('first_name') !!}</p>
+                        <p class="alert-danger">{!! $errors->first('first_name') !!}</p>
                         @endif
                             
                             
@@ -86,10 +86,10 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Confirm Your Password</label>
-                            {!! Form::password('c_password',['placeholder' => 'Confirm your Password', 'class' => 'form-control']) !!}
+                            {!! Form::password('password_confirmation',['placeholder' => 'Confirm your Password', 'class' => 'form-control']) !!}
 
-                            @if($errors->has('c_password'))
-                            <p style="color:red;">{!! $errors->first('c_password') !!}</p>
+                            @if($errors->has('password_confirmation'))
+                            <p style="color:red;">{!! $errors->first('password_confirmation') !!}</p>
                             @endif
                         
                         </div>
@@ -100,9 +100,9 @@
                         <div class="form-group">
                             <label>Role</label>
                             <select name="role_id" class="form-control" data-parsley-group="wizard-step-1" >
-                                <option value="0">-- Select --</option>
+                                <option value="">-- Select --</option>
                                 <option value="1">Administrator</option>
-                                <option value="2">User</option>
+                                <option value="2">Loan Officer</option>
                                 <option value="3">Customer</option>
                                 <option value="4">Guest</option>
                             </select>

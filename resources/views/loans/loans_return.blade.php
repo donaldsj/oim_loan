@@ -27,6 +27,15 @@
 								<div id="wizard">
 									
 									<div class="">
+										<div class="row">
+                                            @if($errors->any())
+							                    <div class="alert alert-danger">
+							                        @foreach($errors->all() as $error)
+							                            <p>{{ $error }}</p>
+							                        @endforeach
+							                    </div>
+							                @endif
+						                </div>
                                         <fieldset>
                                             <legend class="pull-left width-full">Return Information</legend>
                                             <div class="row">                                            

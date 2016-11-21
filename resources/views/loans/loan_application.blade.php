@@ -11,7 +11,7 @@
 			<!-- begin page-header -->
 			<h1 class="page-header">Loan Application <small></small></h1>
 			<!-- end page-header -->
-			
+		
 			<!-- begin row -->
 			<div class="row">
                 <!-- begin col-12 -->
@@ -24,11 +24,20 @@
                         {!! Form::open(['action' => 'LoansController@store', 'files' => true, 'method' => 'POST', 'name' => 'form-wizard', 'data-parsley-validate' => 'true']) !!}
 
 								<div id="panel">
+									<div class="row">
+                                        @if($errors->any())
+						                    <div class="alert alert-danger">
+						                        @foreach($errors->all() as $error)
+						                            <p>{{ $error }}</p>
+						                        @endforeach
+						                    </div>
+						                @endif
+					                </div>
 									<div class="wizard-step-1">
                                         <fieldset>
                                             <legend class="pull-left width-full">LOAN INFORMATION</legend>
                                             <input type="hidden" name="customer_id" value="{!! $id !!}">
-                                            
+
                                             <div class="row">
                                                 <div class="col-md-4">
 													<div class="form-group block1">

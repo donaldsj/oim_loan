@@ -51,13 +51,13 @@ class LoginController extends Controller
             $this->fireLockoutEvent($request);
 
             return redirect('login')
-                ->with('error', trans('auth.login'))
+                ->with('error', trans('You have too many login attempts, your account is temporarily locked!'))
                 ->withInput($request->only('log'));
         }
 
         $logValue = $request->input('log');
 
-        $logAccess = filter_var($logValue, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $logAccess = filter_var($logValue, FILTER_VALIDATE_EMAIL) ? 'email' : 'email';
 
         $credentials = [
             $logAccess  => $logValue,
@@ -65,12 +65,12 @@ class LoginController extends Controller
         ];
 
         if (!auth()->validate($credentials)) {
-            if (! $lockedOut) {
+            if (!$lockedOut) {
                 $this->incrementLoginAttempts($request);
             }
 
             return redirect('login')
-                ->with('error', trans('auth.login'))
+                ->with('error', trans('Incorect username or password!'))
                 ->withInput($request->only('log'));
         }
 

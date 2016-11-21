@@ -58,7 +58,7 @@ class EmployeesController extends Controller
         $data['password'] = $p;
         $employee = User::create($data);
         if($employee){
-            return redirect()->route('employees', ['employees','user']);
+            return redirect()->route('employees');
         }
     }
 

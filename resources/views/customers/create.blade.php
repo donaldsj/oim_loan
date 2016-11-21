@@ -14,6 +14,15 @@
             </h1>
 
             <!-- end page-header -->
+            <div class="row col-md-10">
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
             
             <!-- begin row -->
             <div class="row">

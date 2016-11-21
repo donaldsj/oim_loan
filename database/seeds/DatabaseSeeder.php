@@ -27,13 +27,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Role::create([
-            'title' => 'User',
-            'slug' => 'users',
+            'title' => 'Loan Officer',
+            'slug' => 'loan-officer',
         ]);
 
         Role::create([
             'title' => 'Customer',
-            'slug' => 'customers',
+            'slug' => 'customer',
         ]);
 
         User::create([
@@ -42,8 +42,9 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'Sj',
             'email' => 'admin@admin.com',
             'password' => bcrypt('admin'),
-            'seen' => true,
             'role_id' => 1,
+            'seen' => true,
+            'valid' => true,
             'confirmed' => true,
         ]);
 

@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
             $table->integer('role_id')->unsigned();
             $table->boolean('seen')->default(false);
-            $table->boolean('valid')->default(false);
+            $table->boolean('valid')->default(true);
             $table->boolean('confirmed')->default(true);
             $table->string('confirmation_code')->nullable();
             $table->timestamps();

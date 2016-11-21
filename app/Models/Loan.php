@@ -13,6 +13,7 @@ class Loan extends Model {
     public static $rules = [
          'customer_id' => 'required',
          'loan_amount' => 'required',
+         'rate' => 'required',
          'loan_purpose' => 'required',
          'income_source' => 'required',
          'duration' => 'required',

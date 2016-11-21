@@ -16,10 +16,10 @@ class User extends Authenticatable
      // Add your validation rules here
     public static $rules = [
          'first_name' => 'required|max:50',
-         'middle_name' => 'required|max:50',
+         /*'middle_name' => 'required|max:50',*/
          'last_name' => 'required|max:50',
-         'email' => 'required|max:120',
-         'password' => 'required|max:60',
+         'email' => 'required|max:120|email',
+         'password' => 'required|min:4|max:60|confirmed',
          'role_id' => 'required'
      
     ];

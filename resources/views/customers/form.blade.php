@@ -19,6 +19,7 @@
             </li>
         </ol>
         <!-- begin wizard step-1 -->
+        
         <div class="wizard-step-1">
             <fieldset>
                 <legend class="pull-left width-full">Identification</legend>

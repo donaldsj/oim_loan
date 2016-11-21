@@ -59,11 +59,16 @@
                 <!-- begin login-content -->
                 <div class="login-content">
 
-                    @if($errors->any())
+      <!--               @if($errors->any())
                         <div class="alert alert-danger">
                             @foreach($errors->all() as $error)
                                 <p>{{ $error }}</p>
                             @endforeach
+                        </div>
+                    @endif -->
+                    @if(session()->has('error'))
+                        <div class="alert alert-danger">                            
+                            <p>{{ session('error') }}</p>                            
                         </div>
                     @endif
                     
@@ -72,9 +77,15 @@
                         <!-- <form action="" method="POST" class="margin-bottom-0"> -->
                             <div class="form-group m-b-15">
                                 <input type="text" name="log" class="form-control input-lg" placeholder="Email Address" />
+                                @if($errors->has('log'))
+                                    <p style="color:red;">User name or Email is required</p>
+                                @endif
                             </div>
                             <div class="form-group m-b-15">
                                 <input type="password" name="password" class="form-control input-lg" placeholder="Password" />
+                                @if($errors->has('password'))
+                                    <p style="color:red;">Password is required is required</p>
+                                @endif
                             </div>
                             <div class="checkbox m-b-30">
                                 <label>

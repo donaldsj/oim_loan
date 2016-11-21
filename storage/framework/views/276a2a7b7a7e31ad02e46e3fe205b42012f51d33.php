@@ -59,11 +59,16 @@
                 <!-- begin login-content -->
                 <div class="login-content">
 
-                    <?php if($errors->any()): ?>
+      <!--               <?php if($errors->any()): ?>
                         <div class="alert alert-danger">
                             <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                 <p><?php echo e($error); ?></p>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                        </div>
+                    <?php endif; ?> -->
+                    <?php if(session()->has('error')): ?>
+                        <div class="alert alert-danger">                            
+                            <p><?php echo e(session('error')); ?></p>                            
                         </div>
                     <?php endif; ?>
                     
@@ -73,9 +78,15 @@
                         <!-- <form action="" method="POST" class="margin-bottom-0"> -->
                             <div class="form-group m-b-15">
                                 <input type="text" name="log" class="form-control input-lg" placeholder="Email Address" />
+                                <?php if($errors->has('log')): ?>
+                                    <p style="color:red;">User name or Email is required</p>
+                                <?php endif; ?>
                             </div>
                             <div class="form-group m-b-15">
                                 <input type="password" name="password" class="form-control input-lg" placeholder="Password" />
+                                <?php if($errors->has('password')): ?>
+                                    <p style="color:red;">Password is required is required</p>
+                                <?php endif; ?>
                             </div>
                             <div class="checkbox m-b-30">
                                 <label>
