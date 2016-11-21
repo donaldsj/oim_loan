@@ -24,4 +24,9 @@ class Loan extends Model {
     protected $fillable = ['customer_id','loan_date', 'loan_amount', 'interest', 'penalty', 'loan_purpose', 'income_source', 'duration', 'balance', 'due_date'];
 
 
+    public function customer()
+    {
+        return $this->belongsTo('App\Models\Customer', 'customer_id');
+    }
+
 }

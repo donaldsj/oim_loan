@@ -13,7 +13,7 @@ class LoansReturn extends Model
     // Add your validation rules here
     public static $rules = [
     	'loan_code'		=>	'required',
-         'return_amount'	=> 'required',
+        'return_amount'	=> 'required',
     ];
 
    /* protected $table = "customers";*/

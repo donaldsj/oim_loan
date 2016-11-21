@@ -172,7 +172,12 @@ class CustomersController extends Controller
      */
     public function destroy($id)
     {
-        $customer = Customer::findOrFail($id)->delete();
+        if(Customer::findOrFail($id)->loans()->delete()) {
+            $deletedCustomer = Customer::findOrFail($id)->delete();
+            if ($deletedCustomer) {
+               Session::flash('flash_message', 'Customer is deleted successfully!');
+            }            
+        }
 
         return redirect()->route('customers');
     }
