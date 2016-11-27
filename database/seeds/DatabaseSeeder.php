@@ -36,6 +36,11 @@ class DatabaseSeeder extends Seeder
             'slug' => 'customer',
         ]);
 
+        Role::create([
+            'title' => 'Guest',
+            'slug' => 'guest',
+        ]);
+
         User::create([
             'first_name' => 'Donald',
             'middle_name' => 'S',

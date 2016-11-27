@@ -72,7 +72,7 @@
                         </div>
                     <?php endif; ?>
                     
-                    <?php echo Form::open(['url' => 'login', 'method' => 'POST', 'class' => 'margin-bottom-0']); ?>
+                    <?php echo Form::open(['url' => 'login', 'method' => 'POST', 'class' => 'margin-bottom-0', 'autocomplete' => 'off']); ?>
 
                         <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
                         <!-- <form action="" method="POST" class="margin-bottom-0"> -->

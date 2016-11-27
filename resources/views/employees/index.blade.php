@@ -56,7 +56,13 @@
                                            <tr class="even gradeA">
                                                 <td>{!! $epmloyee->first_name !!}&nbsp;{!! $epmloyee->middle_name !!}&nbsp;{!! $epmloyee->last_name !!}</td>
                                                 <td>{!! $epmloyee->email !!}</td>
-                                                <td>{!! $epmloyee->role_id !!}</td>
+                                                <td>
+                                                    @if($epmloyee->role_id == 1)
+                                                        {!! Administrator !!}
+                                                    @elseif($epmloyee->role_id == 2)
+                                                        {!! Loan Officer !!}
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <a href=""><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
                                                     <a href=""><i class="fa fa-trash"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;

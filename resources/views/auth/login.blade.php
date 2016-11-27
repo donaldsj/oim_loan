@@ -72,7 +72,7 @@
                         </div>
                     @endif
                     
-                    {!! Form::open(['url' => 'login', 'method' => 'POST', 'class' => 'margin-bottom-0']) !!}
+                    {!! Form::open(['url' => 'login', 'method' => 'POST', 'class' => 'margin-bottom-0', 'autocomplete' => 'off']) !!}
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <!-- <form action="" method="POST" class="margin-bottom-0"> -->
                             <div class="form-group m-b-15">
