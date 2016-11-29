@@ -58,9 +58,13 @@
                                                 <td>{!! $epmloyee->email !!}</td>
                                                 <td>
                                                     @if($epmloyee->role_id == 1)
-                                                        {!! Administrator !!}
+                                                        Administrator 
                                                     @elseif($epmloyee->role_id == 2)
-                                                        {!! Loan Officer !!}
+                                                        Loan Officer 
+                                                    @elseif($epmloyee->role_id == 3)
+                                                        Customer
+                                                    @else
+                                                        Unknown role
                                                     @endif
                                                 </td>
                                                 <td>
